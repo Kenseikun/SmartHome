@@ -4,6 +4,7 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import RootContext from "../context";
+import AddRoomForm from "./AddRoomForm";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -39,10 +40,8 @@ const AddRoomModal = () => {
     >
       <Fade in={isAddRoomModal}>
         <div className={classes.paper}>
-          <h2 id="transition-modal-title">Transition modal</h2>
-          <p id="transition-modal-description">
-            react-transition-group animates me.
-          </p>
+          <h2 id="transition-modal-title">Add new room</h2>
+          <AddRoomForm />
         </div>
       </Fade>
     </Modal>

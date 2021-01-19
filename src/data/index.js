@@ -1,16 +1,18 @@
 export const initialRoomData = [
   {
     id: 1,
-    name: "Living Room",
+    roomName: "Living Room",
     familyMembers: 1,
-    devices: 1,
+    devices: [],
+    numberOfDevices: 0,
     isDevicesActive: false,
   },
   {
     id: 2,
-    name: "Bed Room",
+    roomName: "Bed Room",
     familyMembers: 2,
-    devices: 0,
+    devices: [],
+    numberOfDevices: 0,
     isDevicesActive: true,
   },
 ];
