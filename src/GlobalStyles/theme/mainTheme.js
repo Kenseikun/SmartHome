@@ -4,7 +4,7 @@ export const mainTheme = {
   },
 
   colors: {
-    orange: "#F8833F",
+    main: "#F8833F",
     gray: "#EEEEEE",
   },
 };
