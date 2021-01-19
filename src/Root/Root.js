@@ -5,11 +5,26 @@ import Router from "../routing/Router";
 
 const Root = () => {
   const [roomsList, setRoomsList] = useState(initialRoomData);
-  console.log(roomsList);
+  const [isAddRoomModal, setIsAddRoomModal] = useState(false);
+
+  const setAddRoomModalOpen = () => {
+    setIsAddRoomModal(true);
+  };
+
+  const setAddRoomModalClose = () => {
+    setIsAddRoomModal(false);
+  };
 
   return (
     <>
-      <RootContext.Provider value={{ roomsList }}>
+      <RootContext.Provider
+        value={{
+          roomsList,
+          isAddRoomModal,
+          setAddRoomModalOpen,
+          setAddRoomModalClose,
+        }}
+      >
         <Router />
       </RootContext.Provider>
     </>
