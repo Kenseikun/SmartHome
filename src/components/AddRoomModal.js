@@ -5,18 +5,17 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import RootContext from "../context";
 import AddRoomForm from "./AddRoomForm";
+import {
+  StyledModalContent,
+  StyledModalTitle,
+} from "./styles/StyledAddRoomModal";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-  },
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    color: "#000",
   },
 }));
 
@@ -39,10 +38,10 @@ const AddRoomModal = () => {
       }}
     >
       <Fade in={isAddRoomModal}>
-        <div className={classes.paper}>
+        <StyledModalContent className={classes.paper}>
           <h2 id="transition-modal-title">Add new room</h2>
           <AddRoomForm />
-        </div>
+        </StyledModalContent>
       </Fade>
     </Modal>
   );

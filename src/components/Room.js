@@ -1,9 +1,13 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import Switch from "@material-ui/core/Switch";
-import { RoomWrapper } from "./styles/StyledRoom";
-import { routes } from "../routes";
 import RootContext from "../context";
+import Switch from "@material-ui/core/Switch";
+import {
+  StyledLink,
+  StyledRoomWrapper,
+  StyledRoomName,
+  StyledFamilyMembersText,
+  StyledDevicesNumberText,
+} from "./styles/StyledRoom";
 
 const Room = ({
   id,
@@ -15,24 +19,28 @@ const Room = ({
   const context = useContext(RootContext);
   const { selectRoom } = context;
   return (
-    <Link onClick={() => selectRoom(id)} to={`/room/${roomName}`}>
-      <RoomWrapper key={id}>
-        <h2>{roomName}</h2>
-        <p>
+    <StyledLink
+      key={id}
+      onClick={() => selectRoom(id)}
+      to={`/room/${roomName.replace(/\s/g, "")}`}
+    >
+      <StyledRoomWrapper key={id}>
+        <StyledRoomName>{roomName}</StyledRoomName>
+        <StyledFamilyMembersText>
           {familyMembers} family {familyMembers === 1 ? "member" : "members"}{" "}
           have access
-        </p>
-        <p>
+        </StyledFamilyMembersText>
+        <StyledDevicesNumberText>
           {numberOfDevices} {numberOfDevices === 1 ? "Device" : "Devices"}
-        </p>
+        </StyledDevicesNumberText>
         <Switch
           checked={isDevicesActive}
           // onChange=""
           name="roomDevicesToggler"
           inputProps={{ "aria-label": "secondary checkbox" }}
         />
-      </RoomWrapper>
-    </Link>
+      </StyledRoomWrapper>
+    </StyledLink>
   );
 };
 

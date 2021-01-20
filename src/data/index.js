@@ -15,4 +15,12 @@ export const initialRoomData = [
     numberOfDevices: 0,
     isDevicesActive: true,
   },
+  {
+    id: 3,
+    roomName: "Bed Room",
+    familyMembers: 2,
+    devices: [],
+    numberOfDevices: 0,
+    isDevicesActive: true,
+  },
 ];

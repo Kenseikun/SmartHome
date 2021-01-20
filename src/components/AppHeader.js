@@ -1,24 +1,32 @@
 import React, { useContext } from "react";
+import RootContext from "../context";
 import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
 import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
-import RootContext from "../context";
+import { PersonPin } from "@material-ui/icons";
+import {
+  StyledHeaderWrapper,
+  StyledPersonWrapper,
+  StyledPersonName,
+  StyledWelcomeText,
+} from "../components/styles/StyledHeader";
 
 const AppHeader = () => {
   const context = useContext(RootContext);
   const { setAddRoomModalOpen } = context;
   return (
-    <div>
-      <div>
-        <h2>Hi Samuel</h2>
-        <p>Welcome to Home</p>
-      </div>
+    <StyledHeaderWrapper>
+      <StyledPersonWrapper>
+        <PersonPin />
+        <StyledPersonName>Hi Samuel</StyledPersonName>
+        <StyledWelcomeText>Welcome to Home</StyledWelcomeText>
+      </StyledPersonWrapper>
       <Tooltip title="Add new room">
         <IconButton onClick={setAddRoomModalOpen}>
           <AddCircleOutlinedIcon />
         </IconButton>
       </Tooltip>
-    </div>
+    </StyledHeaderWrapper>
   );
 };
 

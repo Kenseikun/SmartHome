@@ -1,32 +1,63 @@
 import React, { useContext } from "react";
-import { Button, TextField } from "@material-ui/core";
+import { Button, TextField, Tooltip } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import RootContext from "../context";
+import { Clear } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
-      margin: theme.spacing(1),
-      width: "25ch",
+      width: "90%",
+      margin: "20px auto",
     },
+  },
+  addButton: {
+    width: "50%",
+    margin: "20px auto",
+    backgroundColor: "#F8833F",
+  },
+  closeButton: {
+    width: "10px",
+    color: "tomato",
+    fontSize: "large",
+    position: "absolute",
+    top: "0",
+    right: "0px",
   },
 }));
 
 const AddRoomForm = () => {
   const classes = useStyles();
   const context = useContext(RootContext);
-  const { addNewRoom } = context;
+  const { addNewRoom, setAddRoomModalClose } = context;
   return (
     <form className={classes.root} onSubmit={addNewRoom}>
-      <TextField id="roomName" type="text" name="roomName" label="Room name" />
+      <Tooltip title="close">
+        <Button className={classes.closeButton} onClick={setAddRoomModalClose}>
+          <Clear fontSize="large"></Clear>
+        </Button>
+      </Tooltip>
+      <TextField
+        id="roomName"
+        type="text"
+        name="roomName"
+        label="Room name"
+        required
+      />
       <TextField
         id="familyMembers"
         type="number"
         name="familyMembers"
         label="Family Members"
+        required
       />
-      <Button variant="contained" color="primary" type="submit">
-        Add room
+      <Button
+        className={classes.addButton}
+        variant="contained"
+        color="primary"
+        type="submit"
+      >
+        Add
       </Button>
     </form>
   );
