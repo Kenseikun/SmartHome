@@ -17,11 +17,14 @@ const Room = ({
   isDevicesActive,
 }) => {
   const context = useContext(RootContext);
-  const { selectRoom } = context;
+  const { selectRoom, getRoomCondition } = context;
   return (
     <StyledLink
       key={id}
-      onClick={() => selectRoom(id)}
+      onClick={() => {
+        selectRoom(id);
+        getRoomCondition();
+      }}
       to={`/room/${roomName.replace(/\s/g, "")}`}
     >
       <StyledRoomWrapper key={id}>

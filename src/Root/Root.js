@@ -3,11 +3,33 @@ import RootContext from "../context";
 import Router from "../routing/Router";
 import { initialRoomData } from "../data";
 import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
+import Modal from "../components/Modal";
 
 const Root = () => {
   const [roomsList, setRoomsList] = useState(initialRoomData);
   const [isAddRoomModal, setIsAddRoomModal] = useState(false);
   const [selectedRoom, setSelectedRoom] = useState(null);
+  const [roomCondition, setRoomCondition] = useState({
+    temp: null,
+    humidity: null,
+  });
+  const [modalType, setModalType] = useState("addRoom");
+
+  const getRoomCondition = () => {
+    axios
+      .get(
+        `http://api.openweathermap.org/data/2.5/weather?q=Warsaw&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`
+      )
+      .then((response) => {
+        const { temp, humidity } = response.data.main;
+        setRoomCondition({
+          temp,
+          humidity,
+        });
+      })
+      .catch((error) => console.error(error));
+  };
 
   const setAddRoomModalOpen = () => {
     setIsAddRoomModal(true);
@@ -34,6 +56,7 @@ const Root = () => {
     setRoomsList([...roomsList, newRoom]);
 
     setAddRoomModalClose();
+
     e.target.reset();
   };
 
@@ -42,12 +65,18 @@ const Root = () => {
       return room.id === id;
     });
     setSelectedRoom(foundRoom);
+    setModalType("newDevice");
+  };
+
+  const modalTypeChange = (type) => {
+    setModalType(type);
   };
 
   return (
     <>
       <RootContext.Provider
         value={{
+          getRoomCondition,
           roomsList,
           isAddRoomModal,
           setAddRoomModalOpen,
@@ -55,8 +84,12 @@ const Root = () => {
           addNewRoom,
           selectRoom,
           selectedRoom,
+          roomCondition,
+          modalTypeChange,
+          modalType,
         }}
       >
+        <Modal />
         <Router />
       </RootContext.Provider>
     </>

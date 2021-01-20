@@ -24,3 +24,30 @@ export const initialRoomData = [
     isDevicesActive: true,
   },
 ];
+
+export const devices = [
+  {
+    deviceId: 1,
+    deviceName: "Lamp",
+    deviceIcon: "",
+    deviceOption: "",
+  },
+  {
+    deviceId: 2,
+    deviceName: "TV",
+    deviceIcon: "",
+    deviceOption: "",
+  },
+  {
+    deviceId: 3,
+    deviceName: "Air Conditioner",
+    deviceIcon: "",
+    deviceOption: "",
+  },
+  {
+    deviceId: 4,
+    deviceName: "Fridge",
+    deviceIcon: "",
+    deviceOption: "",
+  },
+];

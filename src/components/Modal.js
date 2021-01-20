@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Modal from "@material-ui/core/Modal";
+import { Modal as MaterialModal } from "@material-ui/core";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import RootContext from "../context";
@@ -9,6 +9,7 @@ import {
   StyledModalContent,
   StyledModalTitle,
 } from "./styles/StyledAddRoomModal";
+import AddDeviceForm from "./AddDeviceForm";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -19,13 +20,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AddRoomModal = () => {
+const Modal = () => {
   const classes = useStyles();
   const context = useContext(RootContext);
-  const { isAddRoomModal, setAddRoomModalClose } = context;
+  const { isAddRoomModal, setAddRoomModalClose, modalType } = context;
 
   return (
-    <Modal
+    <MaterialModal
       aria-labelledby="transition-modal-title"
       aria-describedby="transition-modal-description"
       className={classes.modal}
@@ -39,12 +40,11 @@ const AddRoomModal = () => {
     >
       <Fade in={isAddRoomModal}>
         <StyledModalContent className={classes.paper}>
-          <h2 id="transition-modal-title">Add new room</h2>
-          <AddRoomForm />
+          {modalType === "addRoom" ? <AddRoomForm /> : <AddDeviceForm />}
         </StyledModalContent>
       </Fade>
-    </Modal>
+    </MaterialModal>
   );
 };
 
-export default AddRoomModal;
+export default Modal;

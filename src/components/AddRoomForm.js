@@ -31,35 +31,41 @@ const AddRoomForm = () => {
   const context = useContext(RootContext);
   const { addNewRoom, setAddRoomModalClose } = context;
   return (
-    <form className={classes.root} onSubmit={addNewRoom}>
-      <Tooltip title="close">
-        <Button className={classes.closeButton} onClick={setAddRoomModalClose}>
-          <Clear fontSize="large"></Clear>
+    <>
+      <h2>Add new room</h2>
+      <form className={classes.root} onSubmit={addNewRoom}>
+        <Tooltip title="close">
+          <Button
+            className={classes.closeButton}
+            onClick={setAddRoomModalClose}
+          >
+            <Clear fontSize="large"></Clear>
+          </Button>
+        </Tooltip>
+        <TextField
+          id="roomName"
+          type="text"
+          name="roomName"
+          label="Room name"
+          required
+        />
+        <TextField
+          id="familyMembers"
+          type="number"
+          name="familyMembers"
+          label="Family Members"
+          required
+        />
+        <Button
+          className={classes.addButton}
+          variant="contained"
+          color="primary"
+          type="submit"
+        >
+          Add
         </Button>
-      </Tooltip>
-      <TextField
-        id="roomName"
-        type="text"
-        name="roomName"
-        label="Room name"
-        required
-      />
-      <TextField
-        id="familyMembers"
-        type="number"
-        name="familyMembers"
-        label="Family Members"
-        required
-      />
-      <Button
-        className={classes.addButton}
-        variant="contained"
-        color="primary"
-        type="submit"
-      >
-        Add
-      </Button>
-    </form>
+      </form>
+    </>
   );
 };
 
