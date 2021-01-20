@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import AppHeader from "../components/moleculs/AppHeader";
 import RootContext from "../context";
 import { ArrowBack } from "@material-ui/icons";
+import AppHeaderConditions from "../components/moleculs/AppHeaderConditions";
 
 const SingleRoom = () => {
   const context = useContext(RootContext);
@@ -18,6 +19,7 @@ const SingleRoom = () => {
           familyMembers === 1 ? "member" : "members"
         } have access`}
       />
+      <AppHeaderConditions />
     </>
   );
 };

@@ -9,6 +9,8 @@ export const StyledRoomWrapper = styled.li`
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   gap: 10px;
   background-color: #fff;
   width: 45vw;

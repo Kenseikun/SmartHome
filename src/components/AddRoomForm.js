@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#F8833F",
   },
   closeButton: {
+    borderRadius: "20px",
     width: "10px",
     color: "tomato",
     fontSize: "large",

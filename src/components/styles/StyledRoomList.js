@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const StyledRoomList = styled.ul`
+  background-color: ${({ theme }) => theme.colors.main};
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-content: flex-start;
   flex-wrap: wrap;
   gap: 10px;

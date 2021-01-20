@@ -10,6 +10,7 @@ const Rooms = () => {
         icon={<PersonPin />}
         title="Hi Samuel"
         content="Welcome to Home"
+        inRooms
       />
       <RoomList />
     </>

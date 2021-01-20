@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
    body{
        color: #fff;
        font-family: ${({ theme }) => theme.font.main};
-       background-color: ${({ theme }) => theme.colors.main}
+       background-color: ${({ theme }) => theme.colors.gray}
    }
 
 button {

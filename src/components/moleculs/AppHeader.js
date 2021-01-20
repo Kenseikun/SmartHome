@@ -1,32 +1,37 @@
 import React, { useContext } from "react";
 import RootContext from "../../context";
-import { Link } from "react-router-dom";
+import { routes } from "../../routes";
 import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
-import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
 import {
   StyledHeaderWrapper,
+  StyledLink,
   StyledPersonWrapper,
   StyledPersonName,
   StyledWelcomeText,
 } from "../styles/StyledHeader";
-import { routes } from "../../routes";
+import { AddIcon } from "../styles/StyledAppHeader";
+import AppHeaderConditions from "./AppHeaderConditions";
 
-const AppHeader = ({ title, content, icon }) => {
+const AppHeader = ({ title, content, icon, inRooms }) => {
   const context = useContext(RootContext);
   const { setAddRoomModalOpen, modalTypeChange } = context;
   return (
     <StyledHeaderWrapper>
       <StyledPersonWrapper>
-        <Link to={routes.home} onClick={() => modalTypeChange("addRoom")}>
+        <StyledLink
+          to={routes.home}
+          inRooms={inRooms}
+          onClick={() => modalTypeChange("addRoom")}
+        >
           {icon}
-        </Link>
+        </StyledLink>
         <StyledPersonName>{title}</StyledPersonName>
         <StyledWelcomeText>{content}</StyledWelcomeText>
       </StyledPersonWrapper>
       <Tooltip title="Add new room">
         <IconButton onClick={setAddRoomModalOpen}>
-          <AddCircleOutlinedIcon />
+          <AddIcon />
         </IconButton>
       </Tooltip>
     </StyledHeaderWrapper>

@@ -23,8 +23,9 @@ const Root = () => {
       )
       .then((response) => {
         const { temp, humidity } = response.data.main;
+        const celciusWeather = Math.round(temp - 273);
         setRoomCondition({
-          temp,
+          temp: celciusWeather,
           humidity,
         });
       })
