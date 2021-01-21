@@ -82,7 +82,7 @@ export const devices = [
     deviceOption: {
       optionValue: 24,
       optionName: "Temperature",
-      optionSymbol: "°",
+      optionSymbol: "°C",
       isdeviceActive: false,
     },
   },
@@ -92,7 +92,7 @@ export const devices = [
     deviceOption: {
       optionValue: 5,
       optionName: "Temperature",
-      optionSymbol: "°",
+      optionSymbol: "°C",
       isdeviceActive: false,
     },
   },

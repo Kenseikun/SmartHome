@@ -1,6 +1,12 @@
 import React, { useContext } from "react";
 import RootContext from "../context";
-import { IconButton, Switch, Tooltip } from "@material-ui/core";
+import {
+  IconButton,
+  Slider,
+  Switch,
+  Tooltip,
+  Typography,
+} from "@material-ui/core";
 
 import {
   StyledDeviceWrapper,
@@ -13,7 +19,14 @@ import {
 
 const DisplayRoomDevices = () => {
   const context = useContext(RootContext);
-  const { selectedRoom, deleteRoomDevice } = context;
+  const {
+    selectedRoom,
+    deleteRoomDevice,
+    toggleRoomSingleDeviceActive,
+    handleDeviceOptionValueChange,
+    handleAlertOpen,
+  } = context;
+
   return (
     <>
       <ul
@@ -37,25 +50,30 @@ const DisplayRoomDevices = () => {
               <StyledDeviceDetailsWrapper>
                 <StyledDeviceName>{deviceName}</StyledDeviceName>
                 <StyledDeviceValue>
-                  {optionValue} {optionSymbol}{" "}
-                  {optionName === "Temperature" ? "C" : null} {optionName}
+                  {optionValue} {optionSymbol} {optionName}
                 </StyledDeviceValue>
+
+                {/* <Slider
+                  value={optionValue}
+                  color="secondary"
+                  onChange={(e) => handleDeviceOptionValueChange(deviceId, e)}
+                  aria-labelledby="continuous-slider"
+                /> */}
+
                 <input
                   type="range"
-                  id="volume"
-                  name="slider"
-                  min="0"
-                  max="100"
-                ></input>
+                  value={optionValue}
+                  onChange={(e) => handleDeviceOptionValueChange(deviceId, e)}
+                />
               </StyledDeviceDetailsWrapper>
               <Tooltip title="remove this device">
-                <IconButton onClick={() => deleteRoomDevice(deviceId)}>
+                <IconButton onClick={() => handleAlertOpen(deviceId)}>
                   <StyledTrashIcon />
                 </IconButton>
               </Tooltip>
               <Switch
                 checked={isdeviceActive}
-                // onChange=""
+                onChange={() => toggleRoomSingleDeviceActive(deviceId)}
                 name="deviceToggler"
                 inputProps={{ "aria-label": "secondary checkbox" }}
               />

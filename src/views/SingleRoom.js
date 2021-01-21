@@ -4,6 +4,7 @@ import RootContext from "../context";
 import DisplayConditions from "../components/moleculs/DisplayConditions";
 import DisplayRoomDevices from "../components/DisplayRoomDevices";
 import arrowIcon from "../assets/icons/arrow.svg";
+import Alert from "../components/Alert";
 
 const SingleRoom = () => {
   const context = useContext(RootContext);
@@ -22,6 +23,7 @@ const SingleRoom = () => {
       />
       <DisplayConditions />
       <DisplayRoomDevices />
+      <Alert />
     </>
   );
 };

@@ -20,6 +20,19 @@ const Root = () => {
 
   const [selectedDeviceName, setSelectedDeviceName] = useState("");
 
+  const [isAlertOpen, setisAlertOpen] = useState(false);
+
+  const [selectedDeviceId, setSelectedDeviceId] = useState(null);
+
+  const handleAlertOpen = (deviceId) => {
+    setisAlertOpen(true);
+    setSelectedDeviceId(deviceId);
+  };
+
+  const handleAlertClose = () => {
+    setisAlertOpen(false);
+  };
+
   const handleSelectedDeviceChange = (e) => {
     setSelectedDeviceName(e.target.value);
   };
@@ -105,12 +118,12 @@ const Root = () => {
     setSelectedDeviceName("");
   };
 
-  const deleteRoomDevice = (deviceId) => {
+  const deleteRoomDevice = () => {
     const mappedRooms = roomsList.map((room) => {
       if (selectedRoom.id === room.id) {
         room.numberOfDevices -= 1;
         room.devices = selectedRoom.devices.filter(
-          (device) => device.deviceId !== deviceId
+          (device) => device.deviceId !== selectedDeviceId
         );
       }
       return room;
@@ -126,6 +139,40 @@ const Root = () => {
         room.devices = room.devices.map((device) => {
           if (device.deviceName !== "Fridge") {
             device.deviceOption.isdeviceActive = room.isDevicesActive;
+          }
+          return device;
+        });
+      }
+      return room;
+    });
+
+    setRoomsList([...mapedRooms]);
+  };
+
+  const toggleRoomSingleDeviceActive = (deviceId) => {
+    const mapedRooms = roomsList.map((room) => {
+      if (room.id === selectedRoom.id) {
+        room.devices = room.devices.map((device) => {
+          if (device.deviceId === deviceId) {
+            device.deviceOption.isdeviceActive = !device.deviceOption
+              .isdeviceActive;
+          }
+          return device;
+        });
+      }
+      return room;
+    });
+
+    setRoomsList([...mapedRooms]);
+  };
+
+  const handleDeviceOptionValueChange = (deviceId, e) => {
+    console.log(e);
+    const mapedRooms = roomsList.map((room) => {
+      if (room.id === selectedRoom.id) {
+        room.devices = room.devices.map((device) => {
+          if (device.deviceId === deviceId) {
+            device.deviceOption.optionValue = e.target.value;
           }
           return device;
         });
@@ -156,6 +203,12 @@ const Root = () => {
           addNewDeviceToRoom,
           deleteRoomDevice,
           toggleAllRoomDevicesActive,
+          toggleRoomSingleDeviceActive,
+          handleDeviceOptionValueChange,
+          isAlertOpen,
+          handleAlertClose,
+          handleAlertOpen,
+          selectedDeviceId,
         }}
       >
         <Modal />
