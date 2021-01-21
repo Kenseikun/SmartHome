@@ -40,6 +40,13 @@ const DisplayRoomDevices = () => {
                   {optionValue} {optionSymbol}{" "}
                   {optionName === "Temperature" ? "C" : null} {optionName}
                 </StyledDeviceValue>
+                <input
+                  type="range"
+                  id="volume"
+                  name="slider"
+                  min="0"
+                  max="100"
+                ></input>
               </StyledDeviceDetailsWrapper>
               <Tooltip title="remove this device">
                 <IconButton onClick={() => deleteRoomDevice(deviceId)}>

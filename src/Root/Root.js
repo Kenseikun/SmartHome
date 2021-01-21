@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import RootContext from "../context";
 import Router from "../routing/Router";
 import { initialRoomData } from "../data";
@@ -11,11 +11,13 @@ const Root = () => {
   const [roomsList, setRoomsList] = useState([...initialRoomData]);
   const [isAddRoomModal, setIsAddRoomModal] = useState(false);
   const [selectedRoom, setSelectedRoom] = useState(null);
+
   const [roomCondition, setRoomCondition] = useState({
     temp: null,
     humidity: null,
   });
   const [modalType, setModalType] = useState("addRoom");
+
   const [selectedDeviceName, setSelectedDeviceName] = useState("");
 
   const handleSelectedDeviceChange = (e) => {
@@ -87,6 +89,7 @@ const Root = () => {
 
     const mappedRooms = roomsList.map((room) => {
       if (room.id === selectedRoom.id) {
+        room.numberOfDevices += 1;
         room.devices = [
           ...room.devices,
           { deviceId: uuidv4(), ...foundDevice },
@@ -99,12 +102,13 @@ const Root = () => {
 
     setAddRoomModalClose();
 
-    e.target.reset();
+    setSelectedDeviceName("");
   };
 
   const deleteRoomDevice = (deviceId) => {
     const mappedRooms = roomsList.map((room) => {
       if (selectedRoom.id === room.id) {
+        room.numberOfDevices -= 1;
         room.devices = selectedRoom.devices.filter(
           (device) => device.deviceId !== deviceId
         );
@@ -113,6 +117,23 @@ const Root = () => {
     });
 
     setRoomsList([...mappedRooms]);
+  };
+
+  const toggleAllRoomDevicesActive = (roomId) => {
+    const mapedRooms = roomsList.map((room) => {
+      if (room.id === roomId) {
+        room.isDevicesActive = !room.isDevicesActive;
+        room.devices = room.devices.map((device) => {
+          if (device.deviceName !== "Fridge") {
+            device.deviceOption.isdeviceActive = room.isDevicesActive;
+          }
+          return device;
+        });
+      }
+      return room;
+    });
+
+    setRoomsList([...mapedRooms]);
   };
 
   return (
@@ -134,6 +155,7 @@ const Root = () => {
           handleSelectedDeviceChange,
           addNewDeviceToRoom,
           deleteRoomDevice,
+          toggleAllRoomDevicesActive,
         }}
       >
         <Modal />

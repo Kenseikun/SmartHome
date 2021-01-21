@@ -1,9 +1,7 @@
 import airConditioner from "../assets/icons/airConditioner.svg";
 import camera from "../assets/icons/camera.svg";
 import fridge from "../assets/icons/fridge.svg";
-import humidity from "../assets/icons/humidity.svg";
 import lamp from "../assets/icons/lamp.svg";
-import temperature from "../assets/icons/temperature.svg";
 import tv from "../assets/icons/tv.svg";
 
 export const initialRoomData = [

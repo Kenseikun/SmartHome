@@ -23,7 +23,7 @@ const AppHeader = ({ title, content, icon, inRooms }) => {
           inRooms={inRooms}
           onClick={() => modalTypeChange("addRoom")}
         >
-          {icon}
+          <img src={icon} alt="header icon" style={{ width: "30px" }} />
         </StyledLink>
         <StyledPersonName>{title}</StyledPersonName>
         <StyledWelcomeText>{content}</StyledWelcomeText>

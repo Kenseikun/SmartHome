@@ -1,16 +1,28 @@
 import React from "react";
+import {
+  StyledDeviceWrapper,
+  StyledImage,
+  StyledDeviceDetailsWrapper,
+  StyledDeviceName,
+  StyledDeviceValue,
+  StyledTrashIcon,
+} from "./styles/StyledDevice";
 
 const Device = () => {
   return (
-    <li key={deviceId} style={{ color: "black" }}>
-      <img style={{ width: "50px" }} src={deviceIcon} alt="device icon" />
-      <p>{deviceName}</p>
-      <p>
-        {optionValue} {optionSymbol} {optionName}
-      </p>
+    <StyledDeviceWrapper key={deviceId}>
+      <StyledImage src={deviceIcon} alt="device icon" />
+      <StyledDeviceDetailsWrapper>
+        <StyledDeviceName>{deviceName}</StyledDeviceName>
+        <StyledDeviceValue>
+          {optionValue} {optionSymbol}{" "}
+          {optionName === "Temperature" ? "C" : null} {optionName}
+        </StyledDeviceValue>
+        <input type="range" id="volume" name="slider" min="0" max="100"></input>
+      </StyledDeviceDetailsWrapper>
       <Tooltip title="remove this device">
         <IconButton onClick={() => deleteRoomDevice(deviceId)}>
-          <DeleteForever />
+          <StyledTrashIcon />
         </IconButton>
       </Tooltip>
       <Switch
@@ -19,7 +31,7 @@ const Device = () => {
         name="deviceToggler"
         inputProps={{ "aria-label": "secondary checkbox" }}
       />
-    </li>
+    </StyledDeviceWrapper>
   );
 };
 
