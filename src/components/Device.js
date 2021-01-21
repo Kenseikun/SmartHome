@@ -9,6 +9,9 @@ import {
 } from "./styles/StyledDevice";
 
 const Device = () => {
+
+
+  
   return (
     <StyledDeviceWrapper key={deviceId}>
       <StyledImage src={deviceIcon} alt="device icon" />
@@ -27,7 +30,7 @@ const Device = () => {
       </Tooltip>
       <Switch
         checked={isdeviceActive}
-        // onChange=""
+        onChange={() => toggleRoomSingleDeviceActive(deviceId)}
         name="deviceToggler"
         inputProps={{ "aria-label": "secondary checkbox" }}
       />

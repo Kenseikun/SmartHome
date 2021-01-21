@@ -52,14 +52,6 @@ const DisplayRoomDevices = () => {
                 <StyledDeviceValue>
                   {optionValue} {optionSymbol} {optionName}
                 </StyledDeviceValue>
-
-                {/* <Slider
-                  value={optionValue}
-                  color="secondary"
-                  onChange={(e) => handleDeviceOptionValueChange(deviceId, e)}
-                  aria-labelledby="continuous-slider"
-                /> */}
-
                 <input
                   type="range"
                   value={optionValue}

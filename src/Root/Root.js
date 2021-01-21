@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import RootContext from "../context";
 import Router from "../routing/Router";
 import { initialRoomData } from "../data";
@@ -6,11 +6,17 @@ import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import Modal from "../components/Modal";
 import { devices } from "../data";
+import {
+  getRoomListFromLocalStorage,
+  getSelectedRoomListFromLocalStorage,
+} from "../utils/localStorageGetters";
 
 const Root = () => {
-  const [roomsList, setRoomsList] = useState([...initialRoomData]);
+  const [roomsList, setRoomsList] = useState(getRoomListFromLocalStorage());
   const [isAddRoomModal, setIsAddRoomModal] = useState(false);
-  const [selectedRoom, setSelectedRoom] = useState(null);
+  const [selectedRoom, setSelectedRoom] = useState(
+    getSelectedRoomListFromLocalStorage()
+  );
 
   const [roomCondition, setRoomCondition] = useState({
     temp: null,
@@ -23,6 +29,22 @@ const Root = () => {
   const [isAlertOpen, setisAlertOpen] = useState(false);
 
   const [selectedDeviceId, setSelectedDeviceId] = useState(null);
+
+  const setRoomListToLocalStorage = () => {
+    localStorage.setItem("roomList", JSON.stringify(roomsList));
+  };
+
+  const setSelectedRoomListToLocalStorage = () => {
+    localStorage.setItem("selectedRoom", JSON.stringify(selectedRoom));
+  };
+
+  useEffect(() => {
+    setRoomListToLocalStorage();
+  }, [roomsList]);
+
+  useEffect(() => {
+    setSelectedRoomListToLocalStorage();
+  }, [selectedRoom]);
 
   const handleAlertOpen = (deviceId) => {
     setisAlertOpen(true);
