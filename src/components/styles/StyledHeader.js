@@ -16,7 +16,9 @@ export const StyledLink = styled(Link)`
 `;
 
 export const StyledPersonWrapper = styled.div``;
-export const StyledPersonName = styled.h2``;
+export const StyledPersonName = styled.h2`
+  margin: 10px auto 2px auto;
+`;
 export const StyledWelcomeText = styled.p`
   font-weight: 300;
 `;

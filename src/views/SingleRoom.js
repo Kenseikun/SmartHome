@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import AppHeader from "../components/moleculs/AppHeader";
 import RootContext from "../context";
 import { ArrowBack } from "@material-ui/icons";
-import AppHeaderConditions from "../components/moleculs/AppHeaderConditions";
+import DisplayConditions from "../components/moleculs/DisplayConditions";
+import DisplayRoomDevices from "../components/DisplayRoomDevices";
 
 const SingleRoom = () => {
   const context = useContext(RootContext);
@@ -19,7 +20,8 @@ const SingleRoom = () => {
           familyMembers === 1 ? "member" : "members"
         } have access`}
       />
-      <AppHeaderConditions />
+      <DisplayConditions />
+      <DisplayRoomDevices />
     </>
   );
 };

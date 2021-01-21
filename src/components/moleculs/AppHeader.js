@@ -11,7 +11,6 @@ import {
   StyledWelcomeText,
 } from "../styles/StyledHeader";
 import { AddIcon } from "../styles/StyledAppHeader";
-import AppHeaderConditions from "./AppHeaderConditions";
 
 const AppHeader = ({ title, content, icon, inRooms }) => {
   const context = useContext(RootContext);

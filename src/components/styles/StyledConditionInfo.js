@@ -17,7 +17,6 @@ export const StyledImageWrapper = styled.div`
   background-color: rgba(255, 255, 255, 0.3);
 `;
 export const StyledImage = styled.img`
-  color: #fff;
   width: 30px;
 `;
 export const StyledDetail = styled.p`

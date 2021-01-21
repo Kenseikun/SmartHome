@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RootContext from "../context";
 import Router from "../routing/Router";
 import { initialRoomData } from "../data";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import Modal from "../components/Modal";
+import { devices } from "../data";
 
 const Root = () => {
-  const [roomsList, setRoomsList] = useState(initialRoomData);
+  const [roomsList, setRoomsList] = useState([...initialRoomData]);
   const [isAddRoomModal, setIsAddRoomModal] = useState(false);
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [roomCondition, setRoomCondition] = useState({
@@ -15,6 +16,11 @@ const Root = () => {
     humidity: null,
   });
   const [modalType, setModalType] = useState("addRoom");
+  const [selectedDeviceName, setSelectedDeviceName] = useState("");
+
+  const handleSelectedDeviceChange = (e) => {
+    setSelectedDeviceName(e.target.value);
+  };
 
   const getRoomCondition = () => {
     axios
@@ -23,9 +29,9 @@ const Root = () => {
       )
       .then((response) => {
         const { temp, humidity } = response.data.main;
-        const celciusWeather = Math.round(temp - 273);
+        const celciusTemp = Math.round(temp - 273);
         setRoomCondition({
-          temp: celciusWeather,
+          temp: celciusTemp,
           humidity,
         });
       })
@@ -73,6 +79,38 @@ const Root = () => {
     setModalType(type);
   };
 
+  const addNewDeviceToRoom = (e) => {
+    e.preventDefault();
+    const foundDevice = devices.find(
+      (device) => device.deviceName === selectedDeviceName
+    );
+
+    const mappedRooms = roomsList.map((room) => {
+      if (room.id === selectedRoom.id) {
+        room.devices = [
+          ...room.devices,
+          { deviceId: uuidv4(), ...foundDevice },
+        ];
+      }
+      return room;
+    });
+
+    setRoomsList([...mappedRooms]);
+  };
+
+  const deleteRoomDevice = (deviceId) => {
+    const mappedRooms = roomsList.map((room) => {
+      if (selectedRoom.id === room.id) {
+        room.devices = selectedRoom.devices.filter(
+          (device) => device.deviceId !== deviceId
+        );
+      }
+      return room;
+    });
+
+    setRoomsList([...mappedRooms]);
+  };
+
   return (
     <>
       <RootContext.Provider
@@ -88,6 +126,10 @@ const Root = () => {
           roomCondition,
           modalTypeChange,
           modalType,
+          selectedDeviceName,
+          handleSelectedDeviceChange,
+          addNewDeviceToRoom,
+          deleteRoomDevice,
         }}
       >
         <Modal />

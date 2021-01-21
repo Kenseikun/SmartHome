@@ -59,33 +59,45 @@ export const initialRoomData = [
 
 export const devices = [
   {
-    deviceId: 1,
     deviceName: "Lamp",
-    deviceIcon: { lamp },
-    deviceOption: "",
+    deviceIcon: lamp,
+    deviceOption: {
+      optionValue: 50,
+      optionName: "Brightness",
+      optionSymbol: "%",
+    },
   },
   {
-    deviceId: 2,
     deviceName: "TV",
-    deviceIcon: { tv },
-    deviceOption: "",
+    deviceIcon: tv,
+    deviceOption: {
+      optionValue: 50,
+      optionName: "Volume",
+      optionSymbol: "%",
+    },
   },
   {
-    deviceId: 3,
     deviceName: "Air Conditioner",
-    deviceIcon: { airConditioner },
-    deviceOption: "",
+    deviceIcon: airConditioner,
+    deviceOption: {
+      optionValue: 24,
+      optionName: "Temperature",
+      optionSymbol: "°",
+    },
   },
   {
-    deviceId: 4,
     deviceName: "Fridge",
-    deviceIcon: { fridge },
-    deviceOption: "",
+    deviceIcon: fridge,
+    deviceOption: {
+      optionValue: 5,
+      optionName: "Temperature",
+      optionSymbol: "°",
+    },
   },
-  {
-    deviceId: 5,
-    deviceName: "Fridge",
-    deviceIcon: { camera },
-    deviceOption: "",
-  },
+  // {
+  //   deviceId: 5,
+  //   deviceName: "Camera",
+  //   deviceIcon: { camera },
+  //   deviceOption: "",
+  // },
 ];
