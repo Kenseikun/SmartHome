@@ -65,6 +65,7 @@ export const devices = [
       optionValue: 50,
       optionName: "Brightness",
       optionSymbol: "%",
+      isdeviceActive: false,
     },
   },
   {
@@ -74,6 +75,7 @@ export const devices = [
       optionValue: 50,
       optionName: "Volume",
       optionSymbol: "%",
+      isdeviceActive: false,
     },
   },
   {
@@ -83,6 +85,7 @@ export const devices = [
       optionValue: 24,
       optionName: "Temperature",
       optionSymbol: "°",
+      isdeviceActive: false,
     },
   },
   {
@@ -92,6 +95,7 @@ export const devices = [
       optionValue: 5,
       optionName: "Temperature",
       optionSymbol: "°",
+      isdeviceActive: false,
     },
   },
   // {

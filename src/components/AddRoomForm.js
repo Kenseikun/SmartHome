@@ -3,6 +3,7 @@ import { Button, TextField, Tooltip } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import RootContext from "../context";
 import { Clear } from "@material-ui/icons";
+import { StyledAddButton, StyledCloseButton } from "./styles/StyledAddForms";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -10,20 +11,6 @@ const useStyles = makeStyles((theme) => ({
       width: "90%",
       margin: "20px auto",
     },
-  },
-  addButton: {
-    width: "50%",
-    margin: "20px auto",
-    backgroundColor: "#F8833F",
-  },
-  closeButton: {
-    borderRadius: "20px",
-    width: "10px",
-    color: "tomato",
-    fontSize: "large",
-    position: "absolute",
-    top: "0",
-    right: "0px",
   },
 }));
 
@@ -36,12 +23,9 @@ const AddRoomForm = () => {
       <h2>Add new room</h2>
       <form className={classes.root} onSubmit={addNewRoom}>
         <Tooltip title="close">
-          <Button
-            className={classes.closeButton}
-            onClick={setAddRoomModalClose}
-          >
+          <StyledCloseButton onClick={setAddRoomModalClose}>
             <Clear fontSize="large"></Clear>
-          </Button>
+          </StyledCloseButton>
         </Tooltip>
         <TextField
           id="roomName"
@@ -57,14 +41,9 @@ const AddRoomForm = () => {
           label="Family Members"
           required
         />
-        <Button
-          className={classes.addButton}
-          variant="contained"
-          color="primary"
-          type="submit"
-        >
+        <StyledAddButton variant="contained" type="submit">
           Add
-        </Button>
+        </StyledAddButton>
       </form>
     </>
   );

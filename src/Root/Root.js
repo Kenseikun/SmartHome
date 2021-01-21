@@ -96,6 +96,10 @@ const Root = () => {
     });
 
     setRoomsList([...mappedRooms]);
+
+    setAddRoomModalClose();
+
+    e.target.reset();
   };
 
   const deleteRoomDevice = (deviceId) => {
