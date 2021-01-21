@@ -1,5 +1,4 @@
 import airConditioner from "../assets/icons/airConditioner.svg";
-import camera from "../assets/icons/camera.svg";
 import fridge from "../assets/icons/fridge.svg";
 import lamp from "../assets/icons/lamp.svg";
 import tv from "../assets/icons/tv.svg";
@@ -21,38 +20,6 @@ export const initialRoomData = [
     numberOfDevices: 0,
     isDevicesActive: true,
   },
-  // {
-  //   id: 3,
-  //   roomName: "Bed Room",
-  //   familyMembers: 2,
-  //   devices: [],
-  //   numberOfDevices: 0,
-  //   isDevicesActive: true,
-  // },
-  // {
-  //   id: 4,
-  //   roomName: "Bed Room",
-  //   familyMembers: 2,
-  //   devices: [],
-  //   numberOfDevices: 0,
-  //   isDevicesActive: true,
-  // },
-  // {
-  //   id: 5,
-  //   roomName: "Bed Room",
-  //   familyMembers: 2,
-  //   devices: [],
-  //   numberOfDevices: 0,
-  //   isDevicesActive: true,
-  // },
-  // {
-  //   id: 6,
-  //   roomName: "Bed Room",
-  //   familyMembers: 2,
-  //   devices: [],
-  //   numberOfDevices: 0,
-  //   isDevicesActive: true,
-  // },
 ];
 
 export const devices = [
@@ -96,10 +63,4 @@ export const devices = [
       isdeviceActive: false,
     },
   },
-  // {
-  //   deviceId: 5,
-  //   deviceName: "Camera",
-  //   deviceIcon: { camera },
-  //   deviceOption: "",
-  // },
 ];

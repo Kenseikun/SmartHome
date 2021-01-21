@@ -1,27 +1,21 @@
 import React, { useContext } from "react";
 import RootContext from "../context";
-import {
-  IconButton,
-  Slider,
-  Switch,
-  Tooltip,
-  Typography,
-} from "@material-ui/core";
+import { IconButton, Switch, Tooltip } from "@material-ui/core";
 
 import {
+  StyledDisplayRoomUl,
   StyledDeviceWrapper,
   StyledImage,
   StyledDeviceDetailsWrapper,
   StyledDeviceName,
   StyledDeviceValue,
   StyledTrashIcon,
-} from "./styles/StyledDevice";
+} from "./styles/StyledDisplayRoomDevices";
 
 const DisplayRoomDevices = () => {
   const context = useContext(RootContext);
   const {
     selectedRoom,
-    deleteRoomDevice,
     toggleRoomSingleDeviceActive,
     handleDeviceOptionValueChange,
     handleAlertOpen,
@@ -29,13 +23,7 @@ const DisplayRoomDevices = () => {
 
   return (
     <>
-      <ul
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "column",
-        }}
-      >
+      <StyledDisplayRoomUl>
         {selectedRoom.devices.map((device) => {
           const { deviceId, deviceIcon, deviceName, deviceOption } = device;
           const {
@@ -72,7 +60,7 @@ const DisplayRoomDevices = () => {
             </StyledDeviceWrapper>
           );
         })}
-      </ul>
+      </StyledDisplayRoomUl>
     </>
   );
 };

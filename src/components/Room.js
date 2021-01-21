@@ -25,7 +25,6 @@ const Room = ({
         key={id}
         onClick={() => {
           selectRoom(id);
-          getRoomCondition();
         }}
         to={`/room/${roomName.replace(/\s/g, "")}`}
       >

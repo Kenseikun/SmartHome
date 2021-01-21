@@ -59,7 +59,7 @@ const Root = () => {
     setSelectedDeviceName(e.target.value);
   };
 
-  const getRoomCondition = () => {
+  useEffect(() => {
     axios
       .get(
         `http://api.openweathermap.org/data/2.5/weather?q=Warsaw&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`
@@ -73,7 +73,7 @@ const Root = () => {
         });
       })
       .catch((error) => console.error(error));
-  };
+  }, []);
 
   const setAddRoomModalOpen = () => {
     setIsAddRoomModal(true);
@@ -189,7 +189,6 @@ const Root = () => {
   };
 
   const handleDeviceOptionValueChange = (deviceId, e) => {
-    console.log(e);
     const mapedRooms = roomsList.map((room) => {
       if (room.id === selectedRoom.id) {
         room.devices = room.devices.map((device) => {
@@ -209,7 +208,6 @@ const Root = () => {
     <>
       <RootContext.Provider
         value={{
-          getRoomCondition,
           roomsList,
           isAddRoomModal,
           setAddRoomModalOpen,

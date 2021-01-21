@@ -5,10 +5,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import RootContext from "../context";
 import AddRoomForm from "./AddRoomForm";
-import {
-  StyledModalContent,
-  StyledModalTitle,
-} from "./styles/StyledAddRoomModal";
+import { StyledModalContent } from "./styles/StyledAddRoomModal";
 import AddDeviceForm from "./AddDeviceForm";
 
 const useStyles = makeStyles((theme) => ({
